@@ -32,7 +32,19 @@ public class AutenticarServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int i = 5 / 0;
+        //int i = 5 / 0;
+        
+        String email = request.getParameter("txtEmail");
+        String senha = request.getParameter("txtSenha");
+        
+        String resultado;
+        
+        if(email.equals("tarley.lana@gmail.com") && 
+           senha.equals("123456")) {
+            resultado = "Login concluido com sucesso";
+        } else {
+            resultado = "Login invalido";
+        }
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -40,10 +52,13 @@ public class AutenticarServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AutenticarServlet</title>");            
+            out.println("<title>Servlet AutenticarServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AutenticarServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>" + email + "</h1>");
+            out.println("<h1>" + senha + "</h1>");
+            out.println("<h1>" + resultado + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
